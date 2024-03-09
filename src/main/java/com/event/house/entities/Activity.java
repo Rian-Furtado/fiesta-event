@@ -1,6 +1,11 @@
 package com.event.house.entities;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name = "tb_activity")
 public class Activity {
@@ -16,6 +21,11 @@ public class Activity {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @ManyToMany
+    @JoinTable(name = "tb_activity_participant",
+    joinColumns = @JoinColumn(name = "activity_id"), inverseJoinColumns = @JoinColumn(name = "participant_id"))
+    private List<Participant> participants = new ArrayList<>();
 
     public Activity(){
 
