@@ -27,6 +27,9 @@ public class Activity {
     joinColumns = @JoinColumn(name = "activity_id"), inverseJoinColumns = @JoinColumn(name = "participant_id"))
     private List<Participant> participants = new ArrayList<>();
 
+    @OneToMany(mappedBy = "activity")
+    private List<Block> blocks = new ArrayList<>();
+
     public Activity(){
 
     }
